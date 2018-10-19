@@ -1,0 +1,30 @@
+//https://app.codesignal.com/interview-practice/task/uX5iLwhc6L5ckSyNC/description
+//
+//FirstNotRepeatingCharacter
+//
+//Desciption :Note: Write a solution that only iterates over the string once and uses O(1) additional memory, since this 
+//is what you would be asked to do during a real interview.
+//
+//Given a string s, find and return the first instance of a non-repeating character in it. If there is no such character, return '_'.
+
+char firstNotRepeatingCharacter(String s) {
+
+    int newC = 0;
+    char[] c = new char[26];
+    int[] a = new int[26];
+    for(int i = 0; i < s.length(); i++)
+    {
+        
+        if(a[s.charAt(i) - 'a']  == 0){
+            c[newC] = s.charAt(i);
+            newC++;
+        }
+        a[s.charAt(i) - 'a']++;
+    }
+    for(int i = 0; i < newC;i++)
+    {
+        if(a[c[i] - 'a'] == 1)
+            return c[i];
+    }
+    return '_';
+}
